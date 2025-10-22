@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>클라이밍 크루 합동 대관 파티 초대장</title>
+    <title>마이티핸더 연말 송년회 초대장</title>
     <style>
         * {
             margin: 0;
@@ -129,37 +129,6 @@
             50% { filter: brightness(1.3); }
         }
 
-        /* 크루 심볼 섹션 */
-        .crew-symbols {
-            display: flex;
-            justify-content: space-around;
-            align-items: center;
-            margin: 30px 0;
-            flex-wrap: wrap;
-            gap: 15px;
-        }
-
-        .crew-symbol {
-            width: 80px;
-            height: 80px;
-            border: 2px solid #64b5f6;
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 14px;
-            font-weight: bold;
-            color: #64b5f6;
-            background: rgba(100, 181, 246, 0.1);
-            transition: all 0.3s ease;
-            cursor: pointer;
-        }
-
-        .crew-symbol:hover {
-            transform: scale(1.1);
-            box-shadow: 0 0 20px rgba(100, 181, 246, 0.5);
-        }
-
         /* 내용 섹션 */
         .content-section {
             margin: 25px 0;
@@ -223,12 +192,6 @@
             .title {
                 font-size: 22px;
             }
-
-            .crew-symbol {
-                width: 60px;
-                height: 60px;
-                font-size: 12px;
-            }
         }
 
         /* 스크롤바 스타일 */
@@ -260,46 +223,32 @@
     <div class="envelope-wrapper">
         <div class="envelope">
             <div class="letter">
-                <h1 class="title">🧗 클라이밍 크루 합동 대관 파티 초대장 🧗</h1>
-
-                <!-- 크루 심볼 -->
-                <div class="crew-symbols">
-                    <div class="crew-symbol">마핸</div>
-                    <div class="crew-symbol">적잭</div>
-                    <div class="crew-symbol">클라</div>
-                    <div class="crew-symbol">아득</div>
-                </div>
+                <h1 class="title">🧗 마이티핸더 연말 송년회 초대장 🧗</h1>
 
                 <!-- 메인 메시지 -->
                 <div class="content-section">
                     <h2>📅 행사 정보</h2>
                     <ul>
                         <li><span class="highlight">일정:</span> 12월 6일 토요일 (첫째 주)</li>
-                        <li><span class="highlight">장소:</span> 오프더월</li>
+                        <li><span class="highlight">장소:</span> 을지로 담장</li>
                         <li><span class="highlight">시간:</span> 20:00 - 23:00 (3시간)</li>
                         <li><span class="highlight">비용:</span> N빵</li>
                     </ul>
                 </div>
 
-                <!-- 참석 크루 -->
-                <div class="content-section">
-                    <h2>🎯 참석 크루 (예상)</h2>
-                    <p>마핸, 적잭, 클라, 아득</p>
-                </div>
-
                 <!-- 행사 취지 -->
                 <div class="content-section">
                     <h2>💫 행사 취지</h2>
-                    <p>한 해 마무리 기념으로 여러 크루가 함께 운동하며 교류하는 자리를 마련했습니다. 각 크루 운영진 분들과 멤버들이 함께 즐기는 시간이 되었으면 합니다!</p>
+                    <p>한 해 마무리 기념으로 마이티핸더 멤버들이 함께 운동하며 교류하는 자리를 마련했습니다. 모두가 함께 즐기는 시간이 되었으면 합니다!</p>
                 </div>
 
                 <!-- 특이사항 -->
                 <div class="content-section">
                     <h2>⚠️ 특이사항</h2>
                     <ul>
-                        <li>오프더월 대관은 모두 같이 진행합니다</li>
+                        <li>을지로 담장 대관은 모두 같이 진행합니다</li>
                         <li>대관 특성상 23시 혹은 23시 30분 마감으로 인원이 많은 경우 뒷풀이 이동이 어려울 것으로 예상됩니다</li>
-                        <li>이후 공식적 뒷풀이는 없으며, 크루별로 개별 진행 가능합니다</li>
+                        <li>이후 공식적 뒷풀이는 없으며, 개별 진행 가능합니다</li>
                         <li>다 같이 운동하며 교류하는 것이 목적이므로 특별한 이벤트는 따로 시행하지 않습니다</li>
                         <li>이벤트 희망 시 기획 후 논의 가능합니다</li>
                     </ul>
@@ -339,16 +288,6 @@
         }
 
         createStars();
-
-        // 크루 심볼 클릭 효과 (필요시 각 크루별 정보 추가 가능)
-        document.querySelectorAll('.crew-symbol').forEach(symbol => {
-            symbol.addEventListener('click', function() {
-                this.style.transform = 'scale(1.2) rotate(360deg)';
-                setTimeout(() => {
-                    this.style.transform = 'scale(1)';
-                }, 500);
-            });
-        });
     </script>
 </body>
 </html>
