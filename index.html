@@ -26,7 +26,7 @@
 
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Malgun Gothic', sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: #f5f5f5;
             height: 100%;
             overflow: hidden;
             position: fixed;
@@ -44,9 +44,9 @@
             width: 100%;
             max-width: 500px;
             background: white;
-            border-radius: 20px;
-            padding: 20px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            border-radius: 16px;
+            padding: 24px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
             display: flex;
             flex-direction: column;
             max-height: 100%;
@@ -54,223 +54,218 @@
 
         h1 {
             text-align: center;
-            color: #667eea;
-            margin-bottom: 5px;
-            font-size: 24px;
+            color: #1a1a1a;
+            margin-bottom: 8px;
+            font-size: 20px;
+            font-weight: 600;
         }
 
         .subtitle {
             text-align: center;
-            color: #666;
-            margin-bottom: 15px;
-            font-size: 12px;
+            color: #737373;
+            margin-bottom: 24px;
+            font-size: 13px;
+            font-weight: 400;
         }
 
         .display-section {
-            background: #f8f9fa;
-            border-radius: 15px;
-            padding: 15px;
-            margin-bottom: 15px;
+            background: #fafafa;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
             text-align: center;
+            border: 1px solid #e5e5e5;
         }
 
         .input-display {
-            font-size: 28px;
-            font-weight: bold;
-            color: #333;
-            margin-bottom: 10px;
-            min-height: 35px;
+            font-size: 24px;
+            font-weight: 600;
+            color: #737373;
+            margin-bottom: 12px;
+            min-height: 30px;
             word-break: break-all;
             line-height: 1.2;
         }
 
         .egypt-display {
             font-size: 48px;
-            font-weight: bold;
-            color: #667eea;
-            margin: 10px 0;
+            font-weight: 600;
+            color: #1a1a1a;
+            margin: 12px 0;
             min-height: 60px;
             direction: ltr;
             line-height: 1.2;
         }
 
         .pronunciation {
-            font-size: 20px;
-            color: #764ba2;
-            font-weight: 500;
-            min-height: 25px;
+            font-size: 16px;
+            color: #737373;
+            font-weight: 400;
+            min-height: 20px;
             line-height: 1.2;
         }
 
         .button-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 10px;
-            margin-bottom: 10px;
+            gap: 8px;
+            margin-bottom: 8px;
         }
 
         .number-btn {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: #1a1a1a;
             border: none;
-            border-radius: 12px;
+            border-radius: 8px;
             color: white;
-            font-size: 28px;
-            font-weight: bold;
-            padding: 18px;
+            font-size: 24px;
+            font-weight: 500;
+            padding: 20px;
             cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+            transition: all 0.2s ease;
             -webkit-appearance: none;
             appearance: none;
             touch-action: manipulation;
         }
 
         .number-btn:active {
-            transform: scale(0.95);
-            box-shadow: 0 2px 8px rgba(102, 126, 234, 0.4);
+            background: #404040;
+            transform: scale(0.98);
         }
 
         .control-buttons {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 10px;
+            gap: 8px;
         }
 
         .control-btn {
-            background: #ff6b6b;
-            border: none;
-            border-radius: 12px;
-            color: white;
-            font-size: 18px;
-            font-weight: bold;
+            background: white;
+            border: 1px solid #e5e5e5;
+            border-radius: 8px;
+            color: #1a1a1a;
+            font-size: 15px;
+            font-weight: 500;
             padding: 18px;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: all 0.2s ease;
             -webkit-appearance: none;
             appearance: none;
             touch-action: manipulation;
         }
 
         .control-btn:active {
-            transform: scale(0.95);
-        }
-
-        .control-btn.clear {
-            background: #ee5a6f;
-        }
-
-        .control-btn.backspace {
-            background: #ffa502;
+            background: #fafafa;
+            transform: scale(0.98);
         }
 
         /* iPhone SE 및 작은 화면 */
         @media (max-height: 670px) {
             .container {
-                padding: 15px;
+                padding: 20px;
             }
 
             h1 {
-                font-size: 20px;
-                margin-bottom: 3px;
+                font-size: 18px;
+                margin-bottom: 6px;
             }
 
             .subtitle {
-                font-size: 11px;
-                margin-bottom: 10px;
+                font-size: 12px;
+                margin-bottom: 16px;
             }
 
             .display-section {
-                padding: 12px;
-                margin-bottom: 12px;
+                padding: 16px;
+                margin-bottom: 16px;
             }
 
             .input-display {
-                font-size: 24px;
-                min-height: 30px;
-                margin-bottom: 8px;
+                font-size: 20px;
+                min-height: 26px;
+                margin-bottom: 10px;
             }
 
             .egypt-display {
                 font-size: 40px;
                 min-height: 50px;
-                margin: 8px 0;
+                margin: 10px 0;
             }
 
             .pronunciation {
-                font-size: 18px;
-                min-height: 22px;
+                font-size: 14px;
+                min-height: 18px;
             }
 
             .number-btn {
-                font-size: 24px;
-                padding: 14px;
+                font-size: 22px;
+                padding: 16px;
             }
 
             .control-btn {
-                font-size: 16px;
-                padding: 14px;
+                font-size: 14px;
+                padding: 16px;
             }
 
             .button-grid {
-                gap: 8px;
-                margin-bottom: 8px;
+                gap: 6px;
+                margin-bottom: 6px;
             }
 
             .control-buttons {
-                gap: 8px;
+                gap: 6px;
             }
         }
 
         /* 매우 작은 화면 */
         @media (max-height: 600px) {
             .container {
-                padding: 10px;
+                padding: 16px;
             }
 
             h1 {
-                font-size: 18px;
+                font-size: 16px;
             }
 
             .subtitle {
-                font-size: 10px;
-                margin-bottom: 8px;
+                font-size: 11px;
+                margin-bottom: 12px;
             }
 
             .display-section {
-                padding: 10px;
-                margin-bottom: 10px;
+                padding: 14px;
+                margin-bottom: 12px;
             }
 
             .input-display {
-                font-size: 20px;
-                min-height: 25px;
+                font-size: 18px;
+                min-height: 24px;
             }
 
             .egypt-display {
-                font-size: 35px;
+                font-size: 36px;
                 min-height: 45px;
             }
 
             .pronunciation {
-                font-size: 16px;
-                min-height: 20px;
+                font-size: 13px;
+                min-height: 16px;
             }
 
             .number-btn {
-                font-size: 22px;
-                padding: 12px;
+                font-size: 20px;
+                padding: 14px;
             }
 
             .control-btn {
-                font-size: 14px;
-                padding: 12px;
+                font-size: 13px;
+                padding: 14px;
             }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>🇪🇬 이집트 숫자 변환기</h1>
+        <h1>이집트 숫자 변환기</h1>
         <p class="subtitle">숫자를 입력하면 이집트 아라비아 숫자로 변환됩니다</p>
 
         <div class="display-section">
