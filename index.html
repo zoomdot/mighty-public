@@ -396,7 +396,7 @@
                     result += ' 와 ' + getPronunciation(remainder.toString());
                 }
                 return result;
-            } else if (number < 10000) {
+            } else if (number < 1000000) {
                 const thousands = Math.floor(number / 1000);
                 const remainder = number % 1000;
                 let result = '';
@@ -404,8 +404,25 @@
                     result = '알프';
                 } else if (thousands === 2) {
                     result = '알페인';
-                } else {
+                } else if (thousands < 10) {
                     result = pronunciation[thousands.toString()] + ' 알라프';
+                } else {
+                    result = getPronunciation(thousands.toString()) + ' 알프';
+                }
+                if (remainder > 0) {
+                    result += ' 와 ' + getPronunciation(remainder.toString());
+                }
+                return result;
+            } else if (number < 1000000000) {
+                const millions = Math.floor(number / 1000000);
+                const remainder = number % 1000000;
+                let result = '';
+                if (millions === 1) {
+                    result = '말유운';
+                } else if (millions === 2) {
+                    result = '말유네인';
+                } else {
+                    result = getPronunciation(millions.toString()) + ' 말유운';
                 }
                 if (remainder > 0) {
                     result += ' 와 ' + getPronunciation(remainder.toString());
@@ -413,7 +430,7 @@
                 return result;
             }
 
-            return '숫자가 너무 큽니다';
+            return getPronunciation(Math.floor(number / 1000000000).toString()) + ' 빌리온';
         }
 
         function updateDisplay() {
