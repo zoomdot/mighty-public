@@ -2,292 +2,432 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>마이티핸더 연말 송년회 초대장</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>이집트 숫자 변환기</title>
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            user-select: none;
+        }
+
+        html {
+            height: 100%;
+            overflow: hidden;
+            position: fixed;
+            width: 100%;
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: #000;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Malgun Gothic', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            height: 100%;
             overflow: hidden;
-            height: 100vh;
+            position: fixed;
+            width: 100%;
             display: flex;
-            justify-content: center;
+            flex-direction: column;
             align-items: center;
+            justify-content: center;
+            padding: 10px;
+            overscroll-behavior: none;
+            -webkit-overflow-scrolling: none;
         }
 
-        /* 우주 배경 */
-        .space-background {
-            position: fixed;
-            top: 0;
-            left: 0;
+        .container {
             width: 100%;
-            height: 100%;
-            background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
-            z-index: 0;
-        }
-
-        /* 별들 */
-        .stars {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-        }
-
-        .star {
-            position: absolute;
+            max-width: 500px;
             background: white;
-            border-radius: 50%;
-            animation: twinkle 3s infinite;
+            border-radius: 20px;
+            padding: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            display: flex;
+            flex-direction: column;
+            max-height: 100%;
         }
 
-        @keyframes twinkle {
-            0%, 100% { opacity: 0.3; }
-            50% { opacity: 1; }
-        }
-
-        /* 편지 봉투 */
-        .envelope-wrapper {
-            position: relative;
-            z-index: 10;
-            perspective: 1000px;
-        }
-
-        .envelope {
-            width: 600px;
-            height: 400px;
-            position: relative;
-            transform-style: preserve-3d;
-            animation: float 3s ease-in-out infinite;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-20px); }
-        }
-
-        /* 편지 내용 */
-        .letter {
-            position: absolute;
-            width: 550px;
-            height: 700px;
-            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
-            border: 2px solid #4a5568;
-            border-radius: 10px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
-            transform: translateY(0) scale(0.7);
-            opacity: 0;
-            animation: unfold 2s ease-out forwards;
-            animation-delay: 0.5s;
-            padding: 40px;
-            color: #fff;
-            overflow-y: auto;
-            left: 50%;
-            top: 50%;
-            margin-left: -275px;
-            margin-top: -350px;
-        }
-
-        @keyframes unfold {
-            0% {
-                transform: translateY(100px) scale(0.7) rotateX(-90deg);
-                opacity: 0;
-            }
-            50% {
-                transform: translateY(50px) scale(0.85) rotateX(-45deg);
-                opacity: 0.5;
-            }
-            100% {
-                transform: translateY(0) scale(1) rotateX(0deg);
-                opacity: 1;
-            }
-        }
-
-        /* 제목 */
-        .title {
+        h1 {
             text-align: center;
+            color: #667eea;
+            margin-bottom: 5px;
+            font-size: 24px;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 15px;
+            font-size: 12px;
+        }
+
+        .display-section {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 15px;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .input-display {
             font-size: 28px;
             font-weight: bold;
-            margin-bottom: 30px;
-            background: linear-gradient(45deg, #64b5f6, #ffd54f, #ff8a65);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            animation: shimmer 3s infinite;
+            color: #333;
+            margin-bottom: 10px;
+            min-height: 35px;
+            word-break: break-all;
+            line-height: 1.2;
         }
 
-        @keyframes shimmer {
-            0%, 100% { filter: brightness(1); }
-            50% { filter: brightness(1.3); }
-        }
-
-        /* 내용 섹션 */
-        .content-section {
-            margin: 25px 0;
-            padding: 20px;
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 8px;
-            border-left: 3px solid #64b5f6;
-        }
-
-        .content-section h2 {
-            font-size: 20px;
-            margin-bottom: 15px;
-            color: #64b5f6;
-        }
-
-        .content-section p,
-        .content-section ul {
-            font-size: 15px;
-            line-height: 1.8;
-            color: #e0e0e0;
-        }
-
-        .content-section ul {
-            list-style: none;
-            padding-left: 0;
-        }
-
-        .content-section li {
-            margin: 8px 0;
-            padding-left: 20px;
-            position: relative;
-        }
-
-        .content-section li:before {
-            content: "✦";
-            position: absolute;
-            left: 0;
-            color: #ffd54f;
-        }
-
-        .highlight {
-            color: #ffd54f;
+        .egypt-display {
+            font-size: 48px;
             font-weight: bold;
+            color: #667eea;
+            margin: 10px 0;
+            min-height: 60px;
+            direction: ltr;
+            line-height: 1.2;
         }
 
-        /* 반응형 */
-        @media (max-width: 768px) {
-            .envelope {
-                width: 90vw;
-                height: auto;
+        .pronunciation {
+            font-size: 20px;
+            color: #764ba2;
+            font-weight: 500;
+            min-height: 25px;
+            line-height: 1.2;
+        }
+
+        .button-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+
+        .number-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border: none;
+            border-radius: 12px;
+            color: white;
+            font-size: 28px;
+            font-weight: bold;
+            padding: 18px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+            -webkit-appearance: none;
+            appearance: none;
+            touch-action: manipulation;
+        }
+
+        .number-btn:active {
+            transform: scale(0.95);
+            box-shadow: 0 2px 8px rgba(102, 126, 234, 0.4);
+        }
+
+        .control-buttons {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+
+        .control-btn {
+            background: #ff6b6b;
+            border: none;
+            border-radius: 12px;
+            color: white;
+            font-size: 18px;
+            font-weight: bold;
+            padding: 18px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            -webkit-appearance: none;
+            appearance: none;
+            touch-action: manipulation;
+        }
+
+        .control-btn:active {
+            transform: scale(0.95);
+        }
+
+        .control-btn.clear {
+            background: #ee5a6f;
+        }
+
+        .control-btn.backspace {
+            background: #ffa502;
+        }
+
+        /* iPhone SE 및 작은 화면 */
+        @media (max-height: 670px) {
+            .container {
+                padding: 15px;
             }
 
-            .letter {
-                width: 85vw;
-                height: 80vh;
-                margin-left: -42.5vw;
-                margin-top: -40vh;
-                padding: 25px;
+            h1 {
+                font-size: 20px;
+                margin-bottom: 3px;
             }
 
-            .title {
+            .subtitle {
+                font-size: 11px;
+                margin-bottom: 10px;
+            }
+
+            .display-section {
+                padding: 12px;
+                margin-bottom: 12px;
+            }
+
+            .input-display {
+                font-size: 24px;
+                min-height: 30px;
+                margin-bottom: 8px;
+            }
+
+            .egypt-display {
+                font-size: 40px;
+                min-height: 50px;
+                margin: 8px 0;
+            }
+
+            .pronunciation {
+                font-size: 18px;
+                min-height: 22px;
+            }
+
+            .number-btn {
+                font-size: 24px;
+                padding: 14px;
+            }
+
+            .control-btn {
+                font-size: 16px;
+                padding: 14px;
+            }
+
+            .button-grid {
+                gap: 8px;
+                margin-bottom: 8px;
+            }
+
+            .control-buttons {
+                gap: 8px;
+            }
+        }
+
+        /* 매우 작은 화면 */
+        @media (max-height: 600px) {
+            .container {
+                padding: 10px;
+            }
+
+            h1 {
+                font-size: 18px;
+            }
+
+            .subtitle {
+                font-size: 10px;
+                margin-bottom: 8px;
+            }
+
+            .display-section {
+                padding: 10px;
+                margin-bottom: 10px;
+            }
+
+            .input-display {
+                font-size: 20px;
+                min-height: 25px;
+            }
+
+            .egypt-display {
+                font-size: 35px;
+                min-height: 45px;
+            }
+
+            .pronunciation {
+                font-size: 16px;
+                min-height: 20px;
+            }
+
+            .number-btn {
                 font-size: 22px;
+                padding: 12px;
             }
-        }
 
-        /* 스크롤바 스타일 */
-        .letter::-webkit-scrollbar {
-            width: 8px;
-        }
-
-        .letter::-webkit-scrollbar-track {
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 10px;
-        }
-
-        .letter::-webkit-scrollbar-thumb {
-            background: #64b5f6;
-            border-radius: 10px;
-        }
-
-        .letter::-webkit-scrollbar-thumb:hover {
-            background: #90caf9;
+            .control-btn {
+                font-size: 14px;
+                padding: 12px;
+            }
         }
     </style>
 </head>
 <body>
-    <!-- 우주 배경 -->
-    <div class="space-background"></div>
-    <div class="stars" id="stars"></div>
+    <div class="container">
+        <h1>🇪🇬 이집트 숫자 변환기</h1>
+        <p class="subtitle">숫자를 입력하면 이집트 아라비아 숫자로 변환됩니다</p>
 
-    <!-- 편지 봉투 -->
-    <div class="envelope-wrapper">
-        <div class="envelope">
-            <div class="letter">
-                <h1 class="title">🧗 마이티핸더 연말 송년회 초대장 🧗</h1>
+        <div class="display-section">
+            <div class="input-display" id="inputDisplay">0</div>
+            <div class="egypt-display" id="egyptDisplay">٠</div>
+            <div class="pronunciation" id="pronunciation">시프르</div>
+        </div>
 
-                <!-- 메인 메시지 -->
-                <div class="content-section">
-                    <h2>📅 행사 정보</h2>
-                    <ul>
-                        <li><span class="highlight">일정:</span> 12월 6일 토요일 (첫째 주)</li>
-                        <li><span class="highlight">장소:</span> 을지로 담장</li>
-                        <li><span class="highlight">시간:</span> 20:00 - 23:00 (3시간)</li>
-                        <li><span class="highlight">비용:</span> N빵</li>
-                    </ul>
-                </div>
+        <div class="button-grid">
+            <button class="number-btn" onclick="addNumber('1')">1</button>
+            <button class="number-btn" onclick="addNumber('2')">2</button>
+            <button class="number-btn" onclick="addNumber('3')">3</button>
+            <button class="number-btn" onclick="addNumber('4')">4</button>
+            <button class="number-btn" onclick="addNumber('5')">5</button>
+            <button class="number-btn" onclick="addNumber('6')">6</button>
+            <button class="number-btn" onclick="addNumber('7')">7</button>
+            <button class="number-btn" onclick="addNumber('8')">8</button>
+            <button class="number-btn" onclick="addNumber('9')">9</button>
+            <button class="number-btn" onclick="addNumber('0')">0</button>
+        </div>
 
-                <!-- 행사 취지 -->
-                <div class="content-section">
-                    <h2>💫 행사 취지</h2>
-                    <p>한 해 마무리 기념으로 마이티핸더 멤버들이 함께 운동하며 교류하는 자리를 마련했습니다. 모두가 함께 즐기는 시간이 되었으면 합니다!</p>
-                </div>
-
-                <!-- 특이사항 -->
-                <div class="content-section">
-                    <h2>⚠️ 특이사항</h2>
-                    <ul>
-                        <li>을지로 담장 대관은 모두 같이 진행합니다</li>
-                        <li>대관 특성상 23시 혹은 23시 30분 마감으로 인원이 많은 경우 뒷풀이 이동이 어려울 것으로 예상됩니다</li>
-                        <li>이후 공식적 뒷풀이는 없으며, 개별 진행 가능합니다</li>
-                        <li>다 같이 운동하며 교류하는 것이 목적이므로 특별한 이벤트는 따로 시행하지 않습니다</li>
-                        <li>이벤트 희망 시 기획 후 논의 가능합니다</li>
-                    </ul>
-                </div>
-
-                <!-- 마무리 -->
-                <div class="content-section">
-                    <h2>✨ 함께 해요!</h2>
-                    <p style="text-align: center; font-size: 16px; margin-top: 20px;">
-                        2024년을 함께 마무리하며<br>
-                        즐거운 클라이밍 시간 되시길 바랍니다!
-                    </p>
-                </div>
-            </div>
+        <div class="control-buttons">
+            <button class="control-btn backspace" onclick="backspace()">← 지우기</button>
+            <button class="control-btn clear" onclick="clearAll()">전체 삭제</button>
         </div>
     </div>
 
     <script>
-        // 별 생성
-        function createStars() {
-            const starsContainer = document.getElementById('stars');
-            const numberOfStars = 100;
+        let currentNumber = '0';
 
-            for (let i = 0; i < numberOfStars; i++) {
-                const star = document.createElement('div');
-                star.className = 'star';
+        const egyptianNumbers = {
+            '0': '٠',
+            '1': '١',
+            '2': '٢',
+            '3': '٣',
+            '4': '٤',
+            '5': '٥',
+            '6': '٦',
+            '7': '٧',
+            '8': '٨',
+            '9': '٩'
+        };
 
-                const size = Math.random() * 3;
-                star.style.width = size + 'px';
-                star.style.height = size + 'px';
-                star.style.left = Math.random() * 100 + '%';
-                star.style.top = Math.random() * 100 + '%';
-                star.style.animationDelay = Math.random() * 3 + 's';
+        const pronunciation = {
+            '0': '시프르',
+            '1': '와히드',
+            '2': '이트네인',
+            '3': '탈라타',
+            '4': '아르바아',
+            '5': '함사',
+            '6': '시타',
+            '7': '사바',
+            '8': '타마니야',
+            '9': '티사',
+            '10': '아샤라',
+            '20': '이쉬린',
+            '30': '탈라틴',
+            '40': '아르바인',
+            '50': '함신',
+            '60': '시틴',
+            '70': '사바인',
+            '80': '타마닌',
+            '90': '티신',
+            '100': '미야',
+            '1000': '알프'
+        };
 
-                starsContainer.appendChild(star);
+        function addNumber(num) {
+            if (currentNumber === '0') {
+                currentNumber = num;
+            } else if (currentNumber.length < 15) {
+                currentNumber += num;
             }
+            updateDisplay();
         }
 
-        createStars();
+        function backspace() {
+            if (currentNumber.length > 1) {
+                currentNumber = currentNumber.slice(0, -1);
+            } else {
+                currentNumber = '0';
+            }
+            updateDisplay();
+        }
+
+        function clearAll() {
+            currentNumber = '0';
+            updateDisplay();
+        }
+
+        function toEgyptianNumber(num) {
+            return num.split('').map(digit => egyptianNumbers[digit]).join('');
+        }
+
+        function getPronunciation(num) {
+            const number = parseInt(num);
+
+            if (pronunciation[num]) {
+                return pronunciation[num];
+            }
+
+            if (number < 10) {
+                return pronunciation[num];
+            } else if (number === 10) {
+                return '아샤라';
+            } else if (number < 20) {
+                const ones = num[1];
+                return pronunciation[ones] + ' 아샤르';
+            } else if (number < 100) {
+                const tens = num[0] + '0';
+                const ones = num[1];
+                if (ones === '0') {
+                    return pronunciation[tens];
+                }
+                return pronunciation[ones] + ' 와 ' + pronunciation[tens];
+            } else if (number < 1000) {
+                const hundreds = Math.floor(number / 100);
+                const remainder = number % 100;
+                let result = '';
+                if (hundreds === 1) {
+                    result = '미야';
+                } else if (hundreds === 2) {
+                    result = '미아테인';
+                } else {
+                    result = pronunciation[hundreds.toString()] + ' 미야';
+                }
+                if (remainder > 0) {
+                    result += ' 와 ' + getPronunciation(remainder.toString());
+                }
+                return result;
+            } else if (number < 10000) {
+                const thousands = Math.floor(number / 1000);
+                const remainder = number % 1000;
+                let result = '';
+                if (thousands === 1) {
+                    result = '알프';
+                } else if (thousands === 2) {
+                    result = '알페인';
+                } else {
+                    result = pronunciation[thousands.toString()] + ' 알라프';
+                }
+                if (remainder > 0) {
+                    result += ' 와 ' + getPronunciation(remainder.toString());
+                }
+                return result;
+            }
+
+            return '숫자가 너무 큽니다';
+        }
+
+        function updateDisplay() {
+            document.getElementById('inputDisplay').textContent = currentNumber;
+            document.getElementById('egyptDisplay').textContent = toEgyptianNumber(currentNumber);
+            document.getElementById('pronunciation').textContent = getPronunciation(currentNumber);
+        }
+
+        updateDisplay();
     </script>
 </body>
 </html>
