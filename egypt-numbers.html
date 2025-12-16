@@ -296,8 +296,8 @@
         </div>
 
         <div class="pronunciation-toggle">
-            <input type="checkbox" id="koreanMode" onchange="updateDisplay()">
-            <label for="koreanMode">한국어로 읽기</label>
+            <input type="checkbox" id="digitMode" onchange="updateDisplay()">
+            <label for="digitMode">숫자별로 읽기</label>
         </div>
 
         <div class="button-grid">
@@ -459,53 +459,29 @@
             return getPronunciation(Math.floor(number / 1000000000).toString()) + ' 빌리온';
         }
 
-        function getKoreanPronunciation(num) {
-            const number = parseInt(num);
-            if (number === 0) return '영';
+        function getDigitByDigitPronunciation(num) {
+            const singleDigitPronunciation = {
+                '0': '시프르',
+                '1': '와히드',
+                '2': '이트네인',
+                '3': '탈라타',
+                '4': '아르바아',
+                '5': '함사',
+                '6': '시타',
+                '7': '사바',
+                '8': '타마니야',
+                '9': '티사'
+            };
 
-            const koreanNumbers = ['', '일', '이', '삼', '사', '오', '육', '칠', '팔', '구'];
-            const units = ['', '십', '백', '천'];
-            const bigUnits = ['', '만', '억', '조', '경'];
-
-            function readSection(n) {
-                if (n === 0) return '';
-                let result = '';
-                for (let i = 3; i >= 0; i--) {
-                    const digit = Math.floor(n / Math.pow(10, i)) % 10;
-                    if (digit !== 0) {
-                        if (i > 0 && digit === 1) {
-                            result += units[i];
-                        } else {
-                            result += koreanNumbers[digit] + units[i];
-                        }
-                    }
-                }
-                return result;
-            }
-
-            let result = '';
-            let unitIndex = 0;
-            let tempNum = number;
-
-            while (tempNum > 0) {
-                const section = tempNum % 10000;
-                const sectionText = readSection(section);
-                if (sectionText !== '') {
-                    result = sectionText + bigUnits[unitIndex] + result;
-                }
-                tempNum = Math.floor(tempNum / 10000);
-                unitIndex++;
-            }
-
-            return result || '영';
+            return num.split('').map(digit => singleDigitPronunciation[digit]).join(' ');
         }
 
         function updateDisplay() {
-            const isKoreanMode = document.getElementById('koreanMode').checked;
+            const isDigitMode = document.getElementById('digitMode').checked;
             document.getElementById('inputDisplay').textContent = currentNumber;
             document.getElementById('egyptDisplay').textContent = toEgyptianNumber(currentNumber);
-            document.getElementById('pronunciation').textContent = isKoreanMode
-                ? getKoreanPronunciation(currentNumber)
+            document.getElementById('pronunciation').textContent = isDigitMode
+                ? getDigitByDigitPronunciation(currentNumber)
                 : getPronunciation(currentNumber);
         }
 

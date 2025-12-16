@@ -158,6 +158,27 @@
             transform: scale(0.98);
         }
 
+        .pronunciation-toggle {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            margin-bottom: 16px;
+            font-size: 13px;
+            color: #737373;
+        }
+
+        .pronunciation-toggle input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+        }
+
+        .pronunciation-toggle label {
+            cursor: pointer;
+            user-select: none;
+        }
+
         /* iPhone SE 및 작은 화면 */
         @media (max-height: 670px) {
             .container {
@@ -272,6 +293,11 @@
             <div class="input-display" id="inputDisplay">0</div>
             <div class="egypt-display" id="egyptDisplay">٠</div>
             <div class="pronunciation" id="pronunciation">시프르</div>
+        </div>
+
+        <div class="pronunciation-toggle">
+            <input type="checkbox" id="digitMode" onchange="updateDisplay()">
+            <label for="digitMode">숫자별로 읽기</label>
         </div>
 
         <div class="button-grid">
@@ -433,10 +459,30 @@
             return getPronunciation(Math.floor(number / 1000000000).toString()) + ' 빌리온';
         }
 
+        function getDigitByDigitPronunciation(num) {
+            const singleDigitPronunciation = {
+                '0': '시프르',
+                '1': '와히드',
+                '2': '이트네인',
+                '3': '탈라타',
+                '4': '아르바아',
+                '5': '함사',
+                '6': '시타',
+                '7': '사바',
+                '8': '타마니야',
+                '9': '티사'
+            };
+
+            return num.split('').map(digit => singleDigitPronunciation[digit]).join(' ');
+        }
+
         function updateDisplay() {
+            const isDigitMode = document.getElementById('digitMode').checked;
             document.getElementById('inputDisplay').textContent = currentNumber;
             document.getElementById('egyptDisplay').textContent = toEgyptianNumber(currentNumber);
-            document.getElementById('pronunciation').textContent = getPronunciation(currentNumber);
+            document.getElementById('pronunciation').textContent = isDigitMode
+                ? getDigitByDigitPronunciation(currentNumber)
+                : getPronunciation(currentNumber);
         }
 
         updateDisplay();
